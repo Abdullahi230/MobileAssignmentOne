@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">MobileAssignmentOne</string>
+
+    <string name="app_name">Drop App</string>
+    <string name="location">St.Paul,MN</string>
+    <string name="Degrees">72°</string>
+    <string name="feels_like">Feels Like 78°C</string>
+    <string name="low_temp">Low: 65°C</string>
+    <string name="high_temp">High: 80°C</string>
+    <string name="humidity">Humidity: 100%</string>
+    <string name="pressure">Pressure: 1023 hPa</string>
 </resources>
