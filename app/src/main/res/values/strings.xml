@@ -7,4 +7,12 @@
     <string name="humidity">Humidity %1$s%%</string>
     <string name="pressure">Pressure %1$s hPa</string>
     <string name="weather_description">Weather: %1$s</string>
+
+
+    <string name="enter_zip">Enter ZIP Code</string>
+    <string name="view_forecast">View Forecast</string>
+    <string name="error_invalid_zip">Invalid ZIP code or network error</string>
+    <string name="forecast_label">Forecast</string>
+    <string name="temp_range">%1$s°C / %2$s°C</string>
+
 </resources>

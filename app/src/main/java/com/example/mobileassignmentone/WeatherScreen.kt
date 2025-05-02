@@ -3,27 +3,27 @@ package com.example.mobileassignmentone
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun WeatherScreen(weatherData: WeatherResponse, modifier: Modifier = Modifier) {
+fun WeatherScreen(weatherData: WeatherResponse, onForecastClick: () -> Unit) {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
         Text(
-            text = stringResource(R.string.app_name),
+            text = "Drop App",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
@@ -35,7 +35,7 @@ fun WeatherScreen(weatherData: WeatherResponse, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = stringResource(R.string.city_name),
+            text = "Saint Paul, MN",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
@@ -62,7 +62,7 @@ fun WeatherScreen(weatherData: WeatherResponse, modifier: Modifier = Modifier) {
         }
 
         Text(
-            text = stringResource(R.string.feels_like, weatherData.feelsLike),
+            text = "Feels like: ${weatherData.feelsLike}°C",
             fontSize = 17.sp,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(top = 13.dp)
@@ -70,12 +70,19 @@ fun WeatherScreen(weatherData: WeatherResponse, modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text(text = stringResource(R.string.low_temp, weatherData.tempMin))
-        Text(text = stringResource(R.string.high_temp, weatherData.tempMax))
-        Text(text = stringResource(R.string.humidity, weatherData.humidity))
-        Text(text = stringResource(R.string.pressure, weatherData.pressure))
-        Text(text = stringResource(R.string.weather_description, weatherData.description))
+        Text("Low ${weatherData.tempMin}°C")
+        Text("High ${weatherData.tempMax}°C")
+        Text("Humidity ${weatherData.humidity}%")
+        Text("Pressure ${weatherData.pressure} hPa")
+        Text("Weather: ${weatherData.description}")
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = { onForecastClick() },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("View Forecast")
+        }
     }
 }
-
-
