@@ -66,6 +66,9 @@ dependencies {
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.ui:ui-text:1.5.4") // or latest
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
 
 
