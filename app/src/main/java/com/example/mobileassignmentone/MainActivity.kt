@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         ) { permissions ->
             val locationGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true
             val notificationGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-                permissions[Manifest.permission.POST_NOTIFICATIONS] == true else true
+                permissions[Manifest.permission.POST_NOTIFICATIONS] == false else true
 
             if (locationGranted && notificationGranted) {
                 startWeatherService()
