@@ -1,10 +1,14 @@
 package com.example.mobileassignmentone
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -35,16 +39,19 @@ fun CurrentScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .background(brush = Brush.verticalGradient(colors = listOf(Color(0xFF2196F3), Color(0xFFBBDEFB))))
                 .padding(padding)
                 .padding(16.dp)
         ) {
-            OutlinedTextField(
-                value = zipCode,
-                onValueChange = { if (it.length <= 5 && it.all(Char::isDigit)) zipCode = it },
-                label = { Text(stringResource(R.string.enter_zip)) },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth()
-            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = zipCode,
+                    onValueChange = { if (it.length <= 5 && it.all(Char::isDigit)) zipCode = it },
+                    label = { Text(stringResource(R.string.enter_zip)) },
+                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                    modifier = Modifier.weight(1f)
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 

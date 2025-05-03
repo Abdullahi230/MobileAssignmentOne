@@ -8,14 +8,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class WeatherViewModel : ViewModel() {
+
     private val _forecastData = MutableStateFlow<List<ForecastDay>>(emptyList())
     val forecastData: StateFlow<List<ForecastDay>> = _forecastData
+
+    private val _weatherData = MutableStateFlow<WeatherResponse?>(null)
+    val weatherData: StateFlow<WeatherResponse?> = _weatherData
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage
 
-    private val _weatherData = MutableStateFlow<WeatherResponse?>(null)
-    val weatherData: StateFlow<WeatherResponse?> = _weatherData
+    var overrideCityName = false
 
     fun fetchForecast(zipCode: String) {
         viewModelScope.launch {
@@ -29,10 +32,10 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-    fun fetchWeatherData() {
+    fun fetchWeatherData(lat: Double, lon: Double) {
         viewModelScope.launch {
             try {
-                val response = WeatherFetcher.fetchWeather()
+                val response = WeatherFetcher.fetchWeatherByLocation(lat, lon)
                 _weatherData.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -41,6 +44,11 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
+    fun fetchWeatherData() {
+        if (!overrideCityName) {
+            fetchWeatherData(44.9537, -93.0900) // Default to Saint Paul
+        }
+    }
 
     fun clearError() {
         _errorMessage.value = null

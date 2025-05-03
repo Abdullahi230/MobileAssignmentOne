@@ -1,7 +1,7 @@
 package com.example.mobileassignmentone
 
-import com.example.mobileassignmentone.model.ForecastResponse
 import com.example.mobileassignmentone.model.ForecastDay
+import com.example.mobileassignmentone.model.ForecastResponse
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -15,27 +15,27 @@ object WeatherFetcher {
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(
+            Json { ignoreUnknownKeys = true }
+                .asConverterFactory("application/json".toMediaType())
+        )
         .build()
 
     private val forecastApi: ForecastApiService = retrofit.create(ForecastApiService::class.java)
     private val currentApi: WeatherApiService = retrofit.create(WeatherApiService::class.java)
 
-    // 🔹 Used in Assignment 4 for forecast screen
     suspend fun fetchForecastByZip(zipCode: String): List<ForecastDay> {
         val response: ForecastResponse = forecastApi.getForecastByZip(zipCode, API_KEY)
         return response.forecastList
     }
 
-    // 🔹 Used in Assignment 3 for current conditions
-    suspend fun fetchWeather(): WeatherResponse {
+    suspend fun fetchWeatherByLocation(lat: Double, lon: Double): WeatherResponse {
         val result = currentApi.getWeather(
-            lat = 44.9537,
-            lon = -93.0900,
+            lat = lat,
+            lon = lon,
             apiKey = API_KEY,
             units = "metric"
         )
-
         return WeatherResponse(
             temperature = result.main.temp,
             feelsLike = result.main.feelsLike,
