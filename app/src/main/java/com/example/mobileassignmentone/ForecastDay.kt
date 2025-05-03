@@ -2,8 +2,6 @@ package com.example.mobileassignmentone.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.example.mobileassignmentone.model.ForecastMain
-
 
 @Serializable
 data class ForecastDay(
@@ -14,4 +12,5 @@ data class ForecastDay(
     val tempMin: Double get() = main.tempMin
     val tempMax: Double get() = main.tempMax
     val description: String get() = weather.firstOrNull()?.description ?: ""
+    val icon: String get() = weather.firstOrNull()?.icon ?: "" // ✅ Add this
 }

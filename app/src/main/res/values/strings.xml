@@ -15,4 +15,7 @@
     <string name="forecast_label">Forecast</string>
     <string name="temp_range">%1$s°C / %2$s°C</string>
 
+    <string name="my_location">My Location</string>
+
+
 </resources>
