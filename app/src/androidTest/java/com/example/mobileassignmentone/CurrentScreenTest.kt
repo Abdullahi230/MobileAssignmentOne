@@ -11,11 +11,11 @@ class CurrentScreenTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testZipInputAndButton() {
-        val fakeViewModel = FakeWeatherViewModel()
+    fun enterZipAndClickForecast() {
+        val viewModel = FakeWeatherViewModel()
 
         composeTestRule.setContent {
-            CurrentScreen(viewModel = fakeViewModel, onForecastClick = {})
+            CurrentScreen(viewModel = viewModel, onForecastClick = {})
         }
 
         composeTestRule.onNodeWithTag("ZipInput").performTextInput("55101")
@@ -23,15 +23,10 @@ class CurrentScreenTest {
     }
 
     class FakeWeatherViewModel : WeatherViewModel() {
-        private val _error = MutableStateFlow<String?>(null)
-        override val errorMessage: StateFlow<String?> get() = _error
-
         override fun fetchForecast(zipCode: String) {
-            println("Fake fetchForecast called with $zipCode")
+            println("fetchForecast called with $zipCode")
         }
 
-        override fun clearError() {
-            _error.value = null
-        }
+        override fun clearError() {}
     }
 }
