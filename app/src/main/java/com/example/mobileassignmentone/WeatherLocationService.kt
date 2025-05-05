@@ -88,7 +88,7 @@ class WeatherLocationService : Service() {
         return NotificationCompat.Builder(this, "weather_channel")
             .setContentTitle(title)
             .setContentText(content)
-            .setSmallIcon(android.R.drawable.ic_menu_compass) // ✅ Replace with your icon if desired
+            .setSmallIcon(android.R.drawable.ic_menu_compass)
             .setContentIntent(pendingIntent)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)
