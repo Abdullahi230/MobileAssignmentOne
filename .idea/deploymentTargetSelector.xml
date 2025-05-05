@@ -8,16 +8,16 @@
       <SelectionState runConfigName="WeatherScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ForecastScreenTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="CurrentScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="CoordinateInputScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testWeatherDisplayAndButtons()">
+      <SelectionState runConfigName="AppNavGraphTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="testCoordinateInputAndSubmit()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
